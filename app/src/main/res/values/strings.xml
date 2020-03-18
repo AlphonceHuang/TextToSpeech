@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">TextToSpeech</string>
+
+    <string name="US">US</string>
+    <string name="English">English</string>
+    <string name="Chinese">Chinese</string>
+    <string name="China">China</string>
+    <string name="Report_Time">Report Time</string>
+    <string name="Report_Date">Report Date</string>
+</resources>

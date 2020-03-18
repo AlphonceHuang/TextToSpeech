@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+        <array name="lunch">
+            <item>US</item>
+            <item>English</item>
+            <item>Chinese</item>
+            <item>China</item>
+        </array>
+</resources>

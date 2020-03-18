@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_black"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Input"
+        android:textColor="#E3E3E3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/app_name"
+        android:textAllCaps="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText" />
+
+    <RadioGroup
+        android:id="@+id/LanguageRatioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button">
+
+        <RadioButton
+            android:id="@+id/RadioBT_US"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:buttonTint="#E3E3E3"
+            android:text="@string/US"
+            android:textColor="#E3E3E3" />
+
+        <RadioButton
+            android:id="@+id/RadioBT_English"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:buttonTint="#E3E3E3"
+            android:text="@string/English"
+            android:textColor="#E3E3E3" />
+
+        <RadioButton
+            android:id="@+id/RadioBT_Chinese"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:buttonTint="#E3E3E3"
+            android:text="@string/Chinese"
+            android:textColor="#E3E3E3" />
+
+        <RadioButton
+            android:id="@+id/RadioBT_China"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:buttonTint="#E3E3E3"
+            android:text="@string/China"
+            android:textColor="#E3E3E3" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="@string/Report_Time"
+        android:textAllCaps="false"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LanguageRatioGroup" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="@string/Report_Date"
+        android:textAllCaps="false"
+        app:layout_constraintStart_toEndOf="@+id/button2"
+        app:layout_constraintTop_toBottomOf="@+id/LanguageRatioGroup" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
