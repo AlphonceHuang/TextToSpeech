@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private RadioGroup rg;
     private RadioButton rb1, rb2, rb3, rb4;
     SharedPreferences mem_Language;
+    private final String TAG="Alan";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String toSpeak = ed1.getText().toString();
                 Toast.makeText(getApplicationContext(), toSpeak,Toast.LENGTH_SHORT).show();
-                t1.speak(toSpeak, TextToSpeech.QUEUE_FLUSH, null);
+                t1.speak(toSpeak, TextToSpeech.QUEUE_FLUSH, null, null);
             }
         });
 
@@ -61,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                 if (rg.getCheckedRadioButtonId() == R.id.RadioBT_China || rg.getCheckedRadioButtonId() == R.id.RadioBT_Chinese)
                     reportTime = "現在是"+currentTime;
 
-                t1.speak(reportTime, TextToSpeech.QUEUE_FLUSH, null);
+                t1.speak(reportTime, TextToSpeech.QUEUE_FLUSH, null, null);
                 Toast.makeText(getApplicationContext(), reportTime,Toast.LENGTH_SHORT).show();
             }
         });
@@ -74,7 +75,8 @@ public class MainActivity extends AppCompatActivity {
                 if (rg.getCheckedRadioButtonId() == R.id.RadioBT_China || rg.getCheckedRadioButtonId() == R.id.RadioBT_Chinese)
                     reportDate = "今天是"+currentDate;
 
-                t1.speak(reportDate, TextToSpeech.QUEUE_FLUSH, null);
+                //t1.speak(reportDate, TextToSpeech.QUEUE_FLUSH, null);
+                t1.speak(reportDate,TextToSpeech.QUEUE_FLUSH,null,null);
                 Toast.makeText(getApplicationContext(), reportDate,Toast.LENGTH_SHORT).show();
             }
         });
@@ -82,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        Log.w("TTS", "onResume");
+        Log.w(TAG, "onResume");
 
         t1=new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
             @Override
@@ -116,11 +118,11 @@ public class MainActivity extends AppCompatActivity {
 
                     if (ttsLang == TextToSpeech.LANG_MISSING_DATA
                             || ttsLang == TextToSpeech.LANG_NOT_SUPPORTED) {
-                        Log.e("TTS", "The Language is not supported!");
+                        Log.e(TAG, "The Language is not supported!");
                     } else {
-                        Log.i("TTS", "Language Supported.");
+                        Log.i(TAG, "Language Supported.");
                     }
-                    Log.i("TTS", "Initialization success.");
+                    Log.i(TAG, "Initialization success.");
                 }
             }
         });
@@ -129,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onPause(){
-        Log.w("TTS", "onPause");
+        Log.w(TAG, "onPause");
         if(t1 !=null){
             t1.stop();
             t1.shutdown();
@@ -165,11 +167,11 @@ public class MainActivity extends AppCompatActivity {
             }
             if (ttsLang == TextToSpeech.LANG_MISSING_DATA
                     || ttsLang == TextToSpeech.LANG_NOT_SUPPORTED) {
-                Log.e("TTS", "The Language is not supported!");
+                Log.e(TAG, "The Language is not supported!");
             } else {
-                Log.i("TTS", "Language Supported.");
+                Log.i(TAG, "Language Supported.");
             }
-            Log.i("TTS", "Initialization success.");
+            Log.i(TAG, "Initialization success.");
         }
     };
 
