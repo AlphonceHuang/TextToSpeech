@@ -22,9 +22,12 @@ public class MainActivity extends AppCompatActivity {
     private TextToSpeech t1;
     private EditText ed1;
     private RadioGroup rg;
-    private RadioButton rb1, rb2, rb3, rb4;
+    private RadioButton rb1, rb2;
     SharedPreferences mem_Language;
     private final String TAG="Alan";
+
+    private final int LANGUAGE_ENGLIST=0;
+    private final int LANGUAGE_CHINESE=1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,11 +39,11 @@ public class MainActivity extends AppCompatActivity {
         Button b2 = findViewById(R.id.button2);
         Button b3 = findViewById(R.id.button3);
         rb1 = findViewById(R.id.RadioBT_US);
-        rb2 = findViewById(R.id.RadioBT_English);
-        rb3 = findViewById(R.id.RadioBT_Chinese);
-        rb4 = findViewById(R.id.RadioBT_China);
+        rb2 = findViewById(R.id.RadioBT_Chinese);
         rg = findViewById(R.id.LanguageRatioGroup);
         rg.setOnCheckedChangeListener(mRadioButton);
+
+        ed1.requestFocus(); // 直接focus至此處
 
         mem_Language = getSharedPreferences("SpeakLanguage", MODE_PRIVATE);
 
@@ -59,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                 String currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
                 String reportTime = "Now is "+currentTime;
 
-                if (rg.getCheckedRadioButtonId() == R.id.RadioBT_China || rg.getCheckedRadioButtonId() == R.id.RadioBT_Chinese)
+                if (rg.getCheckedRadioButtonId() == R.id.RadioBT_Chinese)
                     reportTime = "現在是"+currentTime;
 
                 t1.speak(reportTime, TextToSpeech.QUEUE_FLUSH, null, null);
@@ -72,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
                 String reportDate = "Today is "+currentDate;
-                if (rg.getCheckedRadioButtonId() == R.id.RadioBT_China || rg.getCheckedRadioButtonId() == R.id.RadioBT_Chinese)
+                if (rg.getCheckedRadioButtonId() == R.id.RadioBT_Chinese)
                     reportDate = "今天是"+currentDate;
 
                 //t1.speak(reportDate, TextToSpeech.QUEUE_FLUSH, null);
@@ -92,27 +95,20 @@ public class MainActivity extends AppCompatActivity {
                 if(status != TextToSpeech.ERROR) {
 
                     int ttsLang = t1.setLanguage(Locale.US);
+                    int currentLang=SpeakLanguageGet();
 
-                    if (SpeakLanguageGet()>3){
-                        SpeakLanguageSet(0);    // default US
+                    if (currentLang>1){
+                        SpeakLanguageSet(LANGUAGE_ENGLIST);    // default US
                     }
 
-                    switch(SpeakLanguageGet()){
-                        case 0:
+                    switch(currentLang){
+                        case LANGUAGE_ENGLIST:
                             ttsLang = t1.setLanguage(Locale.US);
                             rb1.setChecked(true);
                             break;
-                        case 1:
-                            ttsLang = t1.setLanguage(Locale.ENGLISH);
-                            rb2.setChecked(true);
-                            break;
-                        case 2:
+                        case LANGUAGE_CHINESE:
                             ttsLang = t1.setLanguage(Locale.CHINESE);
-                            rb3.setChecked(true);
-                            break;
-                        case 3:
-                            ttsLang = t1.setLanguage(Locale.CHINA);
-                            rb4.setChecked(true);
+                            rb2.setChecked(true);
                             break;
                     }
 
@@ -150,19 +146,11 @@ public class MainActivity extends AppCompatActivity {
             switch (i) {
                 case R.id.RadioBT_US:
                     ttsLang = t1.setLanguage(Locale.US);
-                    SpeakLanguageSet(0);
-                    break;
-                case R.id.RadioBT_English:
-                    ttsLang = t1.setLanguage(Locale.ENGLISH);
-                    SpeakLanguageSet(1);
+                    SpeakLanguageSet(LANGUAGE_ENGLIST);
                     break;
                 case R.id.RadioBT_Chinese:
                     ttsLang = t1.setLanguage(Locale.TRADITIONAL_CHINESE);
-                    SpeakLanguageSet(2);
-                    break;
-                case R.id.RadioBT_China:
-                    ttsLang = t1.setLanguage(Locale.SIMPLIFIED_CHINESE);
-                    SpeakLanguageSet(3);
+                    SpeakLanguageSet(LANGUAGE_CHINESE);
                     break;
             }
             if (ttsLang == TextToSpeech.LANG_MISSING_DATA
@@ -179,8 +167,7 @@ public class MainActivity extends AppCompatActivity {
     // Language index 儲存/讀取
     //=================================================================
     private int SpeakLanguageGet(){
-        int aa=0;
-        return mem_Language.getInt("SpeakLanguage", aa);
+        return mem_Language.getInt("SpeakLanguage", LANGUAGE_ENGLIST);
     }
 
     private void SpeakLanguageSet(int aa){

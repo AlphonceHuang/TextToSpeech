@@ -11,15 +11,16 @@
         android:id="@+id/editText"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:autofillHints="Input text"
         android:ems="10"
         android:inputType="text"
         android:text=""
         android:textColor="#E3E3E3"
+        android:textColorHint="#FFC107"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:autofillHints="Input text" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button"
@@ -51,27 +52,11 @@
             android:textColor="#E3E3E3" />
 
         <RadioButton
-            android:id="@+id/RadioBT_English"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:buttonTint="#E3E3E3"
-            android:text="@string/English"
-            android:textColor="#E3E3E3" />
-
-        <RadioButton
             android:id="@+id/RadioBT_Chinese"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:buttonTint="#E3E3E3"
             android:text="@string/Chinese"
-            android:textColor="#E3E3E3" />
-
-        <RadioButton
-            android:id="@+id/RadioBT_China"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:buttonTint="#E3E3E3"
-            android:text="@string/China"
             android:textColor="#E3E3E3" />
     </RadioGroup>
 

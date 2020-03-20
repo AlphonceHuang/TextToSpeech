@@ -1,10 +1,8 @@
 <resources>
-    <string name="app_name">TextToSpeech</string>
+    <string name="app_name">文字轉語音</string>
 
-    <string name="US">US</string>
-    <string name="English">English</string>
-    <string name="Chinese">Chinese</string>
-    <string name="China">China</string>
-    <string name="Report_Time">Report Time</string>
-    <string name="Report_Date">Report Date</string>
+    <string name="US">英文</string>
+    <string name="Chinese">中文</string>
+    <string name="Report_Time">播報時間</string>
+    <string name="Report_Date">播報日期</string>
 </resources>
