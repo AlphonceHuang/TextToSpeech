@@ -1,3 +1,3 @@
 # TextToSpeech
 TextToSpeech google example
-![image](https://github.com/AlphonceHuang/OpenCV/blob/master/Screenshot.png)
+![image](https://github.com/AlphonceHuang/TextToSpeech/blob/master/Screenshot.png)
